@@ -1,3 +1,5 @@
+import { Link } from '../router';
+
 export default function Home() {
-  return <h1>Home</h1>;
+  return <Link to='/start'>Start</Link>;
 }
