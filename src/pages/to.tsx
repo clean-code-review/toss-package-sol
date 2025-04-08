@@ -14,18 +14,12 @@ export default function ToPage() {
     navigate('/product-info');
   };
 
-  const handleAddressSelect = () => {
-    setRecipientInfo({
-      ...receipientInfo,
-      addressType: 'custom',
-    });
-    navigate('/product-info');
-  };
+  // const handleAddressSelect = () => {};
 
   return (
     <List direction='vertical'>
       <Box onClick={() => handleStoreSelect(store)}>{store} 편의점으로</Box>
-      <Box onClick={handleAddressSelect}>원하는 주소로</Box>
+      {/* <Box onClick={handleAddressSelect}>원하는 주소로</Box> */}
     </List>
   );
 }
