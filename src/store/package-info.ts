@@ -24,7 +24,7 @@ interface PackageInfoActions {
   setProduct: (product: ProductType) => void;
   setValue: (value: number) => void;
   setWeight: (weight: WeightType) => void;
-  setReceipientInfo: (info: ReceipientInfo) => void;
+  setRecipientInfo: (info: ReceipientInfo) => void;
   setReturnAddress: (address: string) => void;
   reset: () => void;
 }
@@ -45,7 +45,7 @@ export const usePackageInfoStore = create<PackageInfo & PackageInfoActions>(
       setProduct: setField('product'),
       setValue: setField('value'),
       setWeight: setField('weight'),
-      setReceipientInfo: setField('receipientInfo'),
+      setRecipientInfo: setField('receipientInfo'),
       setReturnAddress: setField('returnAddress'),
 
       reset: () => set(initialState),

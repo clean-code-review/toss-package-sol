@@ -1,6 +1,7 @@
 import { Box, List } from '@saul-atomrigs/design-system';
 import { useNavigate } from 'react-router-dom';
-import { type StoreType, usePackageInfoStore } from '../store/package-info';
+import { usePackageInfoStore } from '../store/package-info';
+import { type StoreType } from '../types/store-types';
 
 export default function ToPage() {
   const navigate = useNavigate();

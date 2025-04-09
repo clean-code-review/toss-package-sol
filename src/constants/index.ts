@@ -1,4 +1,4 @@
-import { WeightType, ProductType } from '../store/package-info';
+import type { ProductType, WeightType } from '../types/store-types';
 
 export const WEIGHT_OPTIONS: Record<string, WeightType> = {
   LIGHT: '500g',
