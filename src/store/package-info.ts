@@ -1,25 +1,7 @@
 import { create } from 'zustand';
-
-// 패키지 정보 타입 정의
-export type StoreType = 'gs25' | 'cu';
-export type ProductType = 'clothes' | 'electronics' | 'books' | 'foods';
-export type WeightType = '500g' | '1000g' | '5000g';
-
-export interface RecipientInfo {
-  addressType: 'gs25' | 'cu' | 'custom';
-  address: string;
-  name: string;
-  phone: string;
-}
-
-export interface PackageInfo {
-  store: StoreType;
-  product: ProductType;
-  value: number;
-  weight: WeightType;
-  receipientInfo: RecipientInfo;
-  returnAddress: string;
-}
+import { StoreType, ProductType, WeightType } from '../types/store-types';
+import { ReceipientInfo } from '../types/recipient-info';
+import { PackageInfo } from '../types/package-info';
 
 // 초기 스토어 상태
 const initialState: PackageInfo = {
@@ -42,23 +24,31 @@ interface PackageInfoActions {
   setProduct: (product: ProductType) => void;
   setValue: (value: number) => void;
   setWeight: (weight: WeightType) => void;
-  setRecipientInfo: (to: RecipientInfo) => void;
+  setReceipientInfo: (info: ReceipientInfo) => void;
   setReturnAddress: (address: string) => void;
   reset: () => void;
 }
 
 // 패키지 정보 스토어 생성
 export const usePackageInfoStore = create<PackageInfo & PackageInfoActions>(
-  (set) => ({
-    ...initialState,
+  (set) => {
+    const setField =
+      <K extends keyof PackageInfo>(key: K) =>
+      (value: PackageInfo[K]) => {
+        set({ [key]: value });
+      };
 
-    // 액션 구현
-    setStore: (store) => set({ store }),
-    setProduct: (product) => set({ product }),
-    setValue: (value) => set({ value }),
-    setWeight: (weight) => set({ weight }),
-    setRecipientInfo: (receipientInfo) => set({ receipientInfo }),
-    setReturnAddress: (returnAddress) => set({ returnAddress }),
-    reset: () => set(initialState),
-  })
+    return {
+      ...initialState,
+
+      setStore: setField('store'),
+      setProduct: setField('product'),
+      setValue: setField('value'),
+      setWeight: setField('weight'),
+      setReceipientInfo: setField('receipientInfo'),
+      setReturnAddress: setField('returnAddress'),
+
+      reset: () => set(initialState),
+    };
+  }
 );
