@@ -9,20 +9,33 @@ import {
 } from '@saul-atomrigs/design-system';
 import { usePackageInfoStore } from '../store/package-info';
 import { WEIGHT_OPTIONS, PRODUCT_OPTIONS } from '../constants';
+import { DamageWaiverModal } from '../components/modals/damage-waiver-modal';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductInfo() {
+  const navigate = useNavigate();
   const { weight, value, product, setWeight, setValue, setProduct } =
     usePackageInfoStore();
 
   // 모달 상태 관리
   const [weightModalOpen, setWeightModalOpen] = useState(false);
   const [productModalOpen, setProductModalOpen] = useState(false);
+  const [damageWaiverModalOpen, setDamageWaiverModalOpen] = useState(false);
 
   // 무게 옵션
   const weightOptions = Object.values(WEIGHT_OPTIONS);
 
+  const handleNext = () => {
+    // 필요한 검증 후 면책 동의 모달 표시
+    setDamageWaiverModalOpen(true);
+  };
+
+  const handleWaiverConfirm = () => {
+    navigate('/address-input');
+  };
+
   return (
-    <Box padding='20px'>
+    <>
       <Txt size='xl' weight='bold'>
         보내는 물건의 정보를 확인해주세요
       </Txt>
@@ -108,6 +121,17 @@ export default function ProductInfo() {
           ))}
         </List>
       </Modal>
-    </Box>
+
+      {/* 손상 면책 동의 모달 */}
+      <DamageWaiverModal
+        isOpen={damageWaiverModalOpen}
+        onClose={() => setDamageWaiverModalOpen(false)}
+        onConfirm={handleWaiverConfirm}
+      />
+
+      <Button onClick={handleNext} fullWidth>
+        다음
+      </Button>
+    </>
   );
 }
