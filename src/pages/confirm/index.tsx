@@ -1,5 +1,6 @@
 import { Txt, Box, Button } from '@saul-atomrigs/design-system';
 import { useNavigation } from '../../hooks/navigation';
+import { START_ROUTE } from '../start/constants';
 
 export default function ConfirmPage() {
   const { goTo } = useNavigation();
@@ -13,7 +14,7 @@ export default function ConfirmPage() {
 
   const handlePayment = () => {
     alert('결제가 완료되었습니다.');
-    goTo('/');
+    goTo(START_ROUTE);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Txt, Box, Button, Checkbox } from '@saul-atomrigs/design-system';
 import { useNavigation } from '../../hooks/navigation';
+import { RETURN_ADDRESS_ROUTE } from '../return-address/constants';
 
 export default function CautionsConfirmPage() {
   const [isChecked, setIsChecked] = useState(false);
@@ -12,7 +13,7 @@ export default function CautionsConfirmPage() {
 
   const handleNext = () => {
     if (isChecked) {
-      goTo('/return-address');
+      goTo(RETURN_ADDRESS_ROUTE);
     }
   };
 

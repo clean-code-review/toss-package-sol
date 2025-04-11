@@ -2,6 +2,7 @@ import { Box, List } from '@saul-atomrigs/design-system';
 import { useNavigate } from 'react-router-dom';
 import { usePackageInfoStore } from '../../store/package-info';
 import { type StoreType } from '../../types/store-types';
+import { TO_ROUTE } from '../to/constants';
 
 export default function StartPage() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function StartPage() {
 
   const handleStoreSelect = (store: StoreType) => {
     setStore(store);
-    navigate('/to');
+    navigate(TO_ROUTE);
   };
 
   return (
