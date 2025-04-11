@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
-import { usePackageInfoStore } from '../store/package-info';
-import { useNavigation } from '../hooks/navigation';
+import { usePackageInfoStore } from '../../store/package-info';
+import { useNavigation } from '../../hooks/navigation';
+import { CAUTIONS_CONFIRM_ROUTE } from '../cautions-confirm/constants';
 
 export default function ReceipientInputPage() {
   const [name, setName] = useState('');
@@ -23,7 +24,7 @@ export default function ReceipientInputPage() {
       name,
       phone: phoneNumber,
     });
-    goTo('/cautions-confirm');
+    goTo(CAUTIONS_CONFIRM_ROUTE);
   };
 
   return (

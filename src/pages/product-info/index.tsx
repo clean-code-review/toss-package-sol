@@ -7,10 +7,11 @@ import {
   Modal,
   List,
 } from '@saul-atomrigs/design-system';
-import { usePackageInfoStore } from '../store/package-info';
-import { WEIGHT_OPTIONS, PRODUCT_OPTIONS } from '../constants';
-import { DamageWaiverModal } from '../components/modals/damage-waiver-modal';
+import { usePackageInfoStore } from '../../store/package-info';
+import { WEIGHT_OPTIONS, PRODUCT_OPTIONS } from '../../constants';
+import { DamageWaiverModal } from '../../components/modals/damage-waiver-modal';
 import { useNavigate } from 'react-router-dom';
+import { ADDRESS_INPUT_ROUTE } from '../address-input/constants';
 
 export default function ProductInfo() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function ProductInfo() {
   };
 
   const handleWaiverConfirm = () => {
-    navigate('/address-input');
+    navigate(ADDRESS_INPUT_ROUTE);
   };
 
   return (

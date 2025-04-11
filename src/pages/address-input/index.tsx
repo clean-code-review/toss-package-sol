@@ -1,7 +1,7 @@
 import { ChangeEventHandler, useState } from 'react';
 import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
-import { usePackageInfoStore } from '../store/package-info';
-import { useNavigation } from '../hooks/navigation';
+import { usePackageInfoStore } from '../../store/package-info';
+import { useNavigation } from '../../hooks/navigation';
 
 export default function AddressInputPage() {
   const [address, setAddress] = useState('');
