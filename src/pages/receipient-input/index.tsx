@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
-import { usePackageInfoStore } from '../store/package-info';
-import { useNavigation } from '../hooks/navigation';
-import { CAUTIONS_CONFIRM_ROUTE } from './cautions-confirm/constants';
+import { usePackageInfoStore } from '../../store/package-info';
+import { useNavigation } from '../../hooks/navigation';
+import { CAUTIONS_CONFIRM_ROUTE } from '../cautions-confirm/constants';
 
 export default function ReceipientInputPage() {
   const [name, setName] = useState('');

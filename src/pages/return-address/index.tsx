@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Txt, Box, Button, Checkbox } from '@saul-atomrigs/design-system';
-import { useNavigation } from '../hooks/navigation';
+import { useNavigation } from '../../hooks/navigation';
 
 export default function ReturnAddressPage() {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null);

@@ -1,5 +1,5 @@
 import { Txt, Box, Button } from '@saul-atomrigs/design-system';
-import { useNavigation } from '../hooks/navigation';
+import { useNavigation } from '../../hooks/navigation';
 
 export default function ConfirmPage() {
   const { goTo } = useNavigation();
