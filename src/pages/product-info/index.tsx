@@ -24,8 +24,7 @@ export default function ProductInfo() {
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [damageWaiverModalOpen, setDamageWaiverModalOpen] = useState(false);
 
-  const handleNext = () => {
-    // 필요한 검증 후 면책 동의 모달 표시
+  const handleClickNext = () => {
     setDamageWaiverModalOpen(true);
   };
 
@@ -127,7 +126,7 @@ export default function ProductInfo() {
         onConfirm={handleWaiverConfirm}
       />
 
-      <Button onClick={handleNext} fullWidth>
+      <Button onClick={handleClickNext} fullWidth>
         다음
       </Button>
     </>
