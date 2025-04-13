@@ -1,6 +1,7 @@
 import { Txt, Box, Button } from '@saul-atomrigs/design-system';
 import { useNavigation } from '../../hooks/navigation';
 import { START_ROUTE } from '../start/constants';
+import { krw } from '@saul-atomrigs/hangeul';
 
 export default function ConfirmPage() {
   const { goTo } = useNavigation();
@@ -27,18 +28,16 @@ export default function ConfirmPage() {
       <Box padding='16px' bg='#f9f9f9'>
         <Box>
           <Txt size='base'>상품 금액</Txt>
-          <Txt size='base'>
-            {paymentDetails.productPrice.toLocaleString()}원
-          </Txt>
+          <Txt size='base'>{krw(paymentDetails.productPrice)}</Txt>
         </Box>
         <Box>
           <Txt size='base'>배송비</Txt>
-          <Txt size='base'>{paymentDetails.deliveryFee.toLocaleString()}원</Txt>
+          <Txt size='base'>{krw(paymentDetails.deliveryFee)}</Txt>
         </Box>
         <Box>
           <Txt size='base'>할인</Txt>
           <Txt size='base' color='blue'>
-            -{paymentDetails.discount.toLocaleString()}원
+            -{krw(paymentDetails.discount)}
           </Txt>
         </Box>
         <Box>
@@ -46,7 +45,7 @@ export default function ConfirmPage() {
             총 결제 금액
           </Txt>
           <Txt size='lg' weight='bold'>
-            {paymentDetails.totalAmount.toLocaleString()}원
+            {krw(paymentDetails.totalAmount)}
           </Txt>
         </Box>
       </Box>
