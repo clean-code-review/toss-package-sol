@@ -13,6 +13,8 @@ import { DamageWaiverModal } from '../../components/modals/damage-waiver-modal';
 import { ADDRESS_INPUT_ROUTE } from '../address-input/constants';
 import { useNavigation } from '../../hooks/navigation';
 
+const weightOptions = Object.values(WEIGHT_OPTIONS);
+
 export default function ProductInfo() {
   const { goTo } = useNavigation();
   const { weight, value, product, setWeight, setValue, setProduct } =
@@ -21,9 +23,6 @@ export default function ProductInfo() {
   const [weightModalOpen, setWeightModalOpen] = useState(false);
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [damageWaiverModalOpen, setDamageWaiverModalOpen] = useState(false);
-
-  // 무게 옵션
-  const weightOptions = Object.values(WEIGHT_OPTIONS);
 
   const handleNext = () => {
     // 필요한 검증 후 면책 동의 모달 표시
