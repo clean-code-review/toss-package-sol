@@ -18,7 +18,6 @@ export default function ProductInfo() {
   const { weight, value, product, setWeight, setValue, setProduct } =
     usePackageInfoStore();
 
-  // 모달 상태 관리
   const [weightModalOpen, setWeightModalOpen] = useState(false);
   const [productModalOpen, setProductModalOpen] = useState(false);
   const [damageWaiverModalOpen, setDamageWaiverModalOpen] = useState(false);
@@ -103,21 +102,20 @@ export default function ProductInfo() {
         title='물건 정보 선택'
       >
         <List direction='vertical'>
-          {PRODUCT_OPTIONS.map((option) => (
+          {PRODUCT_OPTIONS.map(({ value, label }) => (
             <Box
-              key={option.value}
+              key={value}
               padding='12px'
               onClick={() => {
-                setProduct(option.value);
+                setProduct(value);
                 setProductModalOpen(false);
               }}
               style={{
                 cursor: 'pointer',
-                backgroundColor:
-                  product === option.value ? '#f0f0f0' : 'transparent',
+                backgroundColor: product === value ? '#f0f0f0' : 'transparent',
               }}
             >
-              <Txt>{option.label}</Txt>
+              <Txt>{label}</Txt>
             </Box>
           ))}
         </List>
