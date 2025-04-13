@@ -28,7 +28,7 @@ export default function ProductInfo() {
     setDamageWaiverModalOpen(true);
   };
 
-  const handleWaiverConfirm = () => {
+  const handleConfirmWaiver = () => {
     goTo(ADDRESS_INPUT_ROUTE);
   };
 
@@ -123,7 +123,7 @@ export default function ProductInfo() {
       <DamageWaiverModal
         isOpen={damageWaiverModalOpen}
         onClose={() => setDamageWaiverModalOpen(false)}
-        onConfirm={handleWaiverConfirm}
+        onConfirm={handleConfirmWaiver}
       />
 
       <Button onClick={handleClickNext} fullWidth>
