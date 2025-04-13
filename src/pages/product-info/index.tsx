@@ -60,54 +60,60 @@ export default function ProductInfo() {
             '물건 종류 선택'}
         </Button>
       </Box>
-      <Modal
-        isOpen={weightModalOpen}
-        onClose={() => setWeightModalOpen(false)}
-        title='무게 선택'
-      >
-        <List direction='vertical'>
-          {weightOptions.map((option) => (
-            <Box
-              key={option}
-              padding='12px'
-              onClick={() => {
-                setWeight(option);
-                setWeightModalOpen(false);
-              }}
-              style={{
-                cursor: 'pointer',
-                backgroundColor: weight === option ? '#f0f0f0' : 'transparent',
-              }}
-            >
-              <Txt>{option}</Txt>
-            </Box>
-          ))}
-        </List>
-      </Modal>
-      <Modal
-        isOpen={productModalOpen}
-        onClose={() => setProductModalOpen(false)}
-        title='물건 정보 선택'
-      >
-        <List direction='vertical'>
-          {PRODUCT_OPTIONS.map(({ value, label }) => (
-            <Box
-              key={value}
-              padding='12px'
-              onClick={() => {
-                setProduct(value);
-                setProductModalOpen(false);
-              }}
-              style={{
-                cursor: 'pointer',
-                backgroundColor: product === value ? '#f0f0f0' : 'transparent',
-              }}
-            >
-              <Txt>{label}</Txt>
-            </Box>
-          ))}
-        </List>
-      </Modal>
+      {weightModalOpen && (
+        <Modal
+          isOpen={weightModalOpen}
+          onClose={() => setWeightModalOpen(false)}
+          title='무게 선택'
+        >
+          <List direction='vertical'>
+            {weightOptions.map((option) => (
+              <Box
+                key={option}
+                padding='12px'
+                onClick={() => {
+                  setWeight(option);
+                  setWeightModalOpen(false);
+                }}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor:
+                    weight === option ? '#f0f0f0' : 'transparent',
+                }}
+              >
+                <Txt>{option}</Txt>
+              </Box>
+            ))}
+          </List>
+        </Modal>
+      )}
+      {productModalOpen && (
+        <Modal
+          isOpen={productModalOpen}
+          onClose={() => setProductModalOpen(false)}
+          title='물건 정보 선택'
+        >
+          <List direction='vertical'>
+            {PRODUCT_OPTIONS.map(({ value, label }) => (
+              <Box
+                key={value}
+                padding='12px'
+                onClick={() => {
+                  setProduct(value);
+                  setProductModalOpen(false);
+                }}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor:
+                    product === value ? '#f0f0f0' : 'transparent',
+                }}
+              >
+                <Txt>{label}</Txt>
+              </Box>
+            ))}
+          </List>
+        </Modal>
+      )}
       <DamageWaiverModal
         isOpen={damageWaiverModalOpen}
         onClose={() => setDamageWaiverModalOpen(false)}
