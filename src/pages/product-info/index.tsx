@@ -37,16 +37,12 @@ export default function ProductInfo() {
       <Txt size='xl' weight='bold'>
         보내는 물건의 정보를 확인해주세요
       </Txt>
-
-      {/* 물건 무게 */}
       <Box>
         <Txt size='base'>물건 무게</Txt>
         <Button onClick={() => setWeightModalOpen(true)}>
           {weight || '무게 선택'}
         </Button>
       </Box>
-
-      {/* 물건 금액 */}
       <Box>
         <Txt size='base'>물건 금액</Txt>
         <TextInput
@@ -57,8 +53,6 @@ export default function ProductInfo() {
           type='number'
         />
       </Box>
-
-      {/* 물건 정보 */}
       <Box>
         <Txt size='base'>물건 정보</Txt>
         <Button onClick={() => setProductModalOpen(true)}>
@@ -66,8 +60,6 @@ export default function ProductInfo() {
             '물건 종류 선택'}
         </Button>
       </Box>
-
-      {/* 무게 선택 모달 */}
       <Modal
         isOpen={weightModalOpen}
         onClose={() => setWeightModalOpen(false)}
@@ -92,8 +84,6 @@ export default function ProductInfo() {
           ))}
         </List>
       </Modal>
-
-      {/* 물건 정보 선택 모달 */}
       <Modal
         isOpen={productModalOpen}
         onClose={() => setProductModalOpen(false)}
@@ -118,14 +108,11 @@ export default function ProductInfo() {
           ))}
         </List>
       </Modal>
-
-      {/* 손상 면책 동의 모달 */}
       <DamageWaiverModal
         isOpen={damageWaiverModalOpen}
         onClose={() => setDamageWaiverModalOpen(false)}
         onConfirm={handleConfirmWaiver}
       />
-
       <Button onClick={handleClickNext} fullWidth>
         다음
       </Button>
