@@ -10,11 +10,11 @@ import {
 import { usePackageInfoStore } from '../../store/package-info';
 import { WEIGHT_OPTIONS, PRODUCT_OPTIONS } from '../../constants';
 import { DamageWaiverModal } from '../../components/modals/damage-waiver-modal';
-import { useNavigate } from 'react-router-dom';
 import { ADDRESS_INPUT_ROUTE } from '../address-input/constants';
+import { useNavigation } from '../../hooks/navigation';
 
 export default function ProductInfo() {
-  const navigate = useNavigate();
+  const { goTo } = useNavigation();
   const { weight, value, product, setWeight, setValue, setProduct } =
     usePackageInfoStore();
 
@@ -32,7 +32,7 @@ export default function ProductInfo() {
   };
 
   const handleWaiverConfirm = () => {
-    navigate(ADDRESS_INPUT_ROUTE);
+    goTo(ADDRESS_INPUT_ROUTE);
   };
 
   return (
