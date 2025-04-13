@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
 import { usePackageInfoStore } from '../../store/package-info';
 import { useNavigation } from '../../hooks/navigation';
@@ -10,11 +10,11 @@ export default function ReceipientInputPage() {
   const { receipientInfo, setRecipientInfo } = usePackageInfoStore();
   const { goTo } = useNavigation();
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setName(e.target.value);
   };
 
-  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setPhoneNumber(e.target.value);
   };
 
