@@ -5,6 +5,14 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export type Path =
   | `/`
+  | `/address-input`
+  | `/cautions-confirm`
+  | `/confirm`
+  | `/product-info`
+  | `/receipient-input`
+  | `/return-address`
+  | `/start`
+  | `/to`
 
 export type Params = {
   
