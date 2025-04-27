@@ -1,11 +1,12 @@
 import { ChangeEventHandler, useState } from 'react';
 import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
-import { usePackageInfoStore } from '../../store/package-info';
+import { useStore, useRecipientInfo } from '../../store/package-info';
 import { useNavigation } from '../../hooks/navigation';
 
 export default function AddressInputPage() {
   const [address, setAddress] = useState('');
-  const { store, receipientInfo, setRecipientInfo } = usePackageInfoStore();
+  const { store } = useStore();
+  const { receipientInfo, setRecipientInfo } = useRecipientInfo();
   const { goTo } = useNavigation();
 
   const handleSearchChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -19,6 +20,8 @@ export default function AddressInputPage() {
     });
     goTo('/receipient-input');
   };
+
+  const isAddressValid = address.length > 0;
 
   return (
     <>
@@ -39,7 +42,7 @@ export default function AddressInputPage() {
           placeholder='주소 또는 지하철역을 입력하세요'
         />
       </Box>
-      <Button onClick={handleNext} fullWidth disabled={!address}>
+      <Button onClick={handleNext} fullWidth disabled={!isAddressValid}>
         다음
       </Button>
     </>
