@@ -50,7 +50,7 @@ export default function ReceipientInputPage() {
           name='recipientPhone'
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
-          placeholder='010-0000-0000'
+          placeholder='전화번호를 - 없이 입력하세요'
         />
       </Box>
       <Button onClick={handleNext} fullWidth disabled={!name || !phoneNumber}>
