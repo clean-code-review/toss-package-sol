@@ -37,18 +37,20 @@ export default function ReceipientInputPage() {
           택배 라벨에 표시될 이름입니다
         </Txt>
       </Box>
-      <Box>
+      <Box style={{gap: '8px'}}>
         <TextInput
           label='이름'
           name='recipientName'
           value={name}
           onChange={handleNameChange}
+          placeholder='이름을 입력하세요'
         />
         <TextInput
           label='휴대폰 번호'
           name='recipientPhone'
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
+          placeholder='010-0000-0000'
         />
       </Box>
       <Button onClick={handleNext} fullWidth disabled={!name || !phoneNumber}>
