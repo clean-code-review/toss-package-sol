@@ -51,7 +51,7 @@ export default function ReceipientInputPage() {
           onChange={handlePhoneNumberChange}
         />
       </Box>
-      <Button onClick={handleNext} fullWidth>
+      <Button onClick={handleNext} fullWidth disabled={!name || !phoneNumber}>
         다음
       </Button>
     </>
