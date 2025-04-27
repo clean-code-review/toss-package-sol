@@ -39,7 +39,7 @@ export default function AddressInputPage() {
           placeholder='주소 또는 지하철역을 입력하세요'
         />
       </Box>
-      <Button onClick={handleNext} fullWidth>
+      <Button onClick={handleNext} fullWidth disabled={!address}>
         다음
       </Button>
     </>
