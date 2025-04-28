@@ -13,9 +13,10 @@ export type Path =
   | `/return-address`
   | `/start`
   | `/to`
+  | `*`
 
 export type Params = {
-  
+
 }
 
 export type ModalPath = never

@@ -3,10 +3,12 @@ import { TextInput, Txt, Box, Button } from '@saul-atomrigs/design-system';
 import { usePackageInfoStore } from '../../store/package-info';
 import { useNavigation } from '../../hooks/navigation';
 import { CAUTIONS_CONFIRM_ROUTE } from '../cautions-confirm/constants';
+import { PhoneNumberInput } from './PhoneNumberInput';
 
 export default function ReceipientInputPage() {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [showPhoneError, setShowPhoneError] = useState(false);
   const { receipientInfo, setRecipientInfo } = usePackageInfoStore();
   const { goTo } = useNavigation();
 
@@ -14,18 +16,22 @@ export default function ReceipientInputPage() {
     setName(e.target.value);
   };
 
-  const handlePhoneNumberChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPhoneNumber(e.target.value);
+  const handleNext = () => {
+    setShowPhoneError(true);
+    
+    const isPhoneValid = phoneNumber.length === 11;
+    
+    if (name && isPhoneValid) {
+      setRecipientInfo({
+        ...receipientInfo,
+        name,
+        phone: phoneNumber,
+      });
+      goTo(CAUTIONS_CONFIRM_ROUTE);
+    }
   };
 
-  const handleNext = () => {
-    setRecipientInfo({
-      ...receipientInfo,
-      name,
-      phone: phoneNumber,
-    });
-    goTo(CAUTIONS_CONFIRM_ROUTE);
-  };
+  const isFormValid = name && phoneNumber;
 
   return (
     <>
@@ -37,21 +43,22 @@ export default function ReceipientInputPage() {
           택배 라벨에 표시될 이름입니다
         </Txt>
       </Box>
-      <Box>
+      <Box style={{gap: '8px'}}>
         <TextInput
           label='이름'
           name='recipientName'
           value={name}
           onChange={handleNameChange}
+          placeholder='이름을 입력하세요'
         />
-        <TextInput
-          label='휴대폰 번호'
-          name='recipientPhone'
+        <PhoneNumberInput
           value={phoneNumber}
-          onChange={handlePhoneNumberChange}
+          onChange={setPhoneNumber}
+          name='recipientPhone'
+          showError={showPhoneError}
         />
       </Box>
-      <Button onClick={handleNext} fullWidth>
+      <Button onClick={handleNext} fullWidth disabled={!isFormValid}>
         다음
       </Button>
     </>
